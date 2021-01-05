@@ -3,6 +3,7 @@ import './App.css'
 
 function App() {
   let [todos, setTodos] = useState([{ id: 0, done: false, text: "This is a sample todo." }]);
+  const [newTodo, setNewTodo] = useState('sample text');
 
   function toggleDone(id) {
     todos = todos.map(todo => {
@@ -13,6 +14,13 @@ function App() {
     });
 
     setTodos(todos);
+  }
+
+  function addTodo(e) {
+    const text = newTodo;
+    const id = todos.length;
+
+    setTodos([...todos, { id, text, done: false }]);
   }
 
   return (
@@ -34,6 +42,10 @@ function App() {
           )
         }
       </ul>
+      <p>
+        Add todo: <input value={newTodo} onChange={e => setNewTodo(e.target.value)} type="text" />
+        <button className="add-todo-button" onClick={addTodo}>Add</button>
+      </p>  
     </div>
   );
 }

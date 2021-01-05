@@ -1,0 +1,29 @@
+body {
+  margin: 30px;
+  font-family: serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 10px 20px;
+  margin-top: 10px;
+  display: block;
+  width: fit-content;
+  border-style: solid;
+  border-width: 1px;
+  border-color: crimson;
+}
+
+input {
+  padding: 10px 20px;
+}
+
+button.add-todo-button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border-style: solid;
+  border-width: 1px;
+}
