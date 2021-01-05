@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
 
 function App() {
+  let [todos, setTodos] = useState([{ id: 0, done: false, text: "This is a sample todo." }]);
+
+  function toggleDone(id) {
+    todos = todos.map(todo => {
+      if (todo.id == id)
+        todo.done = !todo.done;
+      
+      return todo;
+    });
+
+    setTodos(todos);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Todos:</p>
+      <ul>
+        {
+          todos.map(({ id, text, done }) => {
+              let style = {
+                color: done ? 'green' : 'crimson',
+                'border-color': done ? 'green' : 'crimson'
+              };
+              return (
+                <li key={id} style={style} onClick={() => toggleDone(id)}>
+                  {text}
+                </li>
+              )
+            }
+          )
+        }
+      </ul>
     </div>
   );
 }
